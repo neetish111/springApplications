@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="oraDrds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+<property name="url" value="jdbc:oracle:thin:@localhost:1522:neetish111"></property>
+<property name="username" value="sys as sysdba"></property>
+<property name="password" value="24071997Nee#"></property>
+
+</bean>
+
+<bean id="oraEmpDao" class="com.nt.dao.OracleEmployeeDAOImpl">
+<constructor-arg ref="oraDrds"></constructor-arg>
+</bean>
+
+<bean id="oraEmpService" class="com.nt.services.EmpMgmtServiceImpl">
+<constructor-arg ref="oraEmpDao"></constructor-arg>
+</bean>
+
+<bean id="oraMainControll" class="com.nt.controller.MainController">
+<constructor-arg ref="oraEmpService"></constructor-arg>
+</bean>
+
+</beans>
