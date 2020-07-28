@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<bean id="sysDate" class="java.util.Date"/>
+
+
+<bean id="dobDate" class="java.util.Date">
+<property name="year" value="90"></property>
+<property name="month" value="11"/>
+<property name="date" value="22"></property>
+</bean>
+
+<bean id="uInfo" class="com.nt.beans.UniversityInfo">
+<property name="facultyDetails" >
+<map key-type="java.lang.Integer" value-type="java.lang.String">
+<entry>
+<key><value>123</value></key>
+<value>Rama</value>
+
+</entry>
+<entry key="1003" value="rajesh">
+</entry>
+<entry key="1004" value="aisha"></entry>
+
+
+</map>
+
+</property>
+<property name="datesInfo">
+
+<map key-type="java.lang.String" value-type="java.util.Date">
+<entry key="schoolJoining" value-ref="sysDate"></entry>
+
+<entry key="dob" value-ref="dobDate"/>
+
+
+
+</map>
+
+</property>
+<property name="fruitsInfo">
+<props>
+<prop key="fruitName1">banana</prop>
+<prop key="fruitName2">Mango</prop>
+<prop key="fruitName3">Orange</prop>
+<prop key="fruitName4">Apple</prop>
+
+</props>
+
+
+</property>
+
+
+</bean>
+<bean id="cInfo" class="com.nt.beans.ContactsInfo">
+<constructor-arg name="phoneNumbers">
+<set value-type="java.lang.Long">
+<value>999999999</value>
+<value>888888888</value>
+<value>777777777</value>
+<value>666666666</value>
+<value>555555555</value>
+
+</set>
+</constructor-arg>
+<constructor-arg name="dates">
+<set value-type="java.util.Date">
+<ref bean="dobDate"/>
+<ref bean="sysDate"/>
+<ref bean="dobDate"/>
+<ref bean="sysDate"/>
+
+
+
+</set>
+
+
+</constructor-arg>
+
+</bean>
+
+<bean id="clg" class="com.nt.beans.College">
+<property name="studName">
+<list>
+<value>Raja</value>
+<value>Rani</value>
+<value>Sarala</value>
+<value>Ravindra</value>
+
+</list>
+
+</property>
+<property name="dateList">
+<list>
+<ref bean="sysDate"/>
+<ref bean="dobDate"/>
+<ref bean="sysDate"/>
+
+</list>
+
+</property>
+
+
+</bean>
+
+</beans>
